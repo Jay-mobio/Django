@@ -1,0 +1,37 @@
+<html>
+    {% load static %}
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+        {% block corecss %}
+        <link rel="stylesheet" href="{% static 'css/core.css' %}">
+        {% endblock corecss %}
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a  href="/course/home">Home</a></li>
+                <li><a  href="/course/about">About</a></li>
+                <li><a  href="/course/core">Course</a></li>
+            </ul>
+        </nav>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+        {% block content %}{% endblock content %}
+        {% block content1 %}{% endblock content1 %}
+        {% block content2 %}{% endblock content2 %}
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/all.min.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+    </body>
+</html>

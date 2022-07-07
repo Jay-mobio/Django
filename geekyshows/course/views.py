@@ -10,3 +10,12 @@ def learn_django(request):
 
 def learn_python(request):
     return render(request,'course/coursetwo.html')
+    
+def home(request):
+    return render(request,'home.html')
+
+def about(request):
+    return render(request,'about.html', )
+
+def core(request):
+    return render(request,'core.html')
