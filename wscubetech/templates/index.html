@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+    </head>
+    <body>
+        {% for n in clist%}
+        <div>{{n}}</div>
+        {% endfor%}
+        <br>
+        <table border="1" cellpadding="10px">
+            <tr>
+                <th>name</th>
+                <th>phone</th>
+            </tr>
+            {% for d in student_details%}
+            <tr>
+                <td>d.name</td>
+                <td>d.phone</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        <br>
+        {% for n in numbers %}
+                {% if n > 20 %}
+                <div>{{n}}</div>
+                {% endif %}
+        {% endfor%}
+    </body>
+</html>
