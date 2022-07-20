@@ -7,3 +7,4 @@ class Page(models.Model):
     page_name = models.CharField(max_length=70)
     page_cat = models.CharField(max_length=70)
     page_publish_date = models.DateField()
+    

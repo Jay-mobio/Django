@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'orm',
     'myapp',
+    'j_orm'
+    
 ]
 
 MIDDLEWARE = [
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'gs2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'orm',
+        'NAME': 'practice',
         'USER': 'postgres',
         'PASSWORD': '1713',
         'HOST':'localhost'
