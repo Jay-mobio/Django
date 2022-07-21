@@ -52,3 +52,9 @@ class Order(models.Model):
 
     def __str__(self):
         return self.products.name
+
+class UserRegister(models.Model):
+    name = models.CharField(max_length=200, null = True)
+    email = models.EmailField(max_length=200, null = True)
+    password1 = models.CharField(max_length=200)
+    password2 = models.CharField(max_length=200)

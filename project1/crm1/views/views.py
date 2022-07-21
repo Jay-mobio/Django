@@ -1,14 +1,14 @@
 from tokenize import group
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
-from .models import *
-from .forms import CustomerForm, OrderForm,CreateUserForm
+from ..models import *
+from ..forms import CustomerForm, OrderForm,CreateUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from .decorators import allowed_users,admin_only
+from ..decorators import allowed_users,admin_only
 from django.contrib.auth.models import Group
 from django.contrib.auth.views import *
 from django import forms
@@ -35,23 +35,7 @@ from django.conf import settings
 
 # Create your views here.
 
-def registerPage(request):
-    if request.user.is_authenticated:
-        return redirect('crm1:login ')
-    else:
-        form = CreateUserForm()
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                username = form.cleaned_data.get('username')
-                # group = Group.objects.get(name='customer')
-                # user.groups.add(group)
-                messages.success(request, 'Account was created for' +username)
-                return redirect('crm1:login')
 
-        context = {'form':form}
-        return render(request,'crm1/register.html',context)
 
 def loginPage(request):
     if request.method == 'POST':
@@ -90,72 +74,22 @@ def home(request):
     return render(request,'crm1/dashboard.html',context)
 
 @allowed_users(allowed_roles=['customers','admin'])
-def userPage(request):
-    orders = request.user.customer.order_set.all()
-    print('ORDERS:', orders)
-    context = {'orders':orders}
-    return render(request, 'crm1/user.html',context)
+
 
 @login_required(login_url='crm1:login')   
-def accountSettings(request):
-    customer = request.user.customer
-    form = CustomerForm(instance=customer)
-    if request.method == 'POST':
-       form = CustomerForm(request.POST, request.FILES,instance=customer)
-       if form.is_valid():
-        form.save()    
-    context = {'form':form}
-    return render(request,'crm1/crm1_settings.html',context)
+
 
 @allowed_users(allowed_roles=['admin'])
-def products(request):
-    products = Products.objects.all()
-    return render(request,'crm1/products.html',{'products':products})
+
 
 @allowed_users(allowed_roles=['admin'])
-def customer(request,pk):
-    customer = Customer.objects.get(id=pk)
-    orders = customer.order_set.all()
-    order_count = orders.count()
-    context = {'customer':customer,'orders':orders,'order_count':order_count}
-    return render(request,'crm1/customer.html',context)
+
 
 @allowed_users(allowed_roles=['admin'])
-def createOrder(request,pk):
-    OrderFormSet = inlineformset_factory(Customer,Order,fields=('products','status',),extra=10)
-    customer = Customer.objects.get(id=pk)
-    formset = OrderFormSet(request.POST,instance=customer)
-    # form = OrderForm(initial={'customer':customer})
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    context = {'formset':formset}
-    return render(request,'crm1/order_form.html',context)
+
 
 @allowed_users(allowed_roles=['admin'])
-def updateOrder(request,pk):
 
-    order = Order.objects.get(id=pk)
-    form = OrderForm(instance=order)
-    if request.method == 'POST':
-        form = OrderForm(request.POST,instance=order)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    context = {'form':form}
-
-    return render(request,'crm1/order_form.html',context)
-
-@allowed_users(allowed_roles=['admin'])
-def deleteOrder(request,pk):
-    order = Order.objects.get(id=pk)
-    if request.method == "POST":
-        order.delete()
-        return redirect('/')
-    context = {'item':order}
-    return render(request,'crm1/delete.html',context)
 
     
 class PasswordResetView(PasswordContextMixin,FormView):
