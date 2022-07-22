@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
-from ..forms import CreateUserForm
 from django.contrib import messages
 from crm1.forms import UserRegister
 from django.contrib.auth.models import User
@@ -12,7 +11,6 @@ class RegisterView(CreateView):
 
     def post(self,request):
         if request.user.is_authenticated:
-            print('-------------------------')
             return redirect('crm1:login')
         else:
             form = UserRegister
@@ -22,7 +20,7 @@ class RegisterView(CreateView):
                     form.save()
                     username = form.cleaned_data.get('username')
                     # group = Group.objects.get(name='customer')
-                    # user.groups.add(group)
+                    # user.groups.add(group)                    
                     messages.success(request, 'Account was created for' +username)
                     return redirect('crm1:home')
 

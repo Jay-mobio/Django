@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Feedback  Form</title>
+    </head>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table border="1px">
+                {{form.as_p}}
+            </table>
+            <input type="submit" class="submit">
+        </form>
+    </body>
+</html>

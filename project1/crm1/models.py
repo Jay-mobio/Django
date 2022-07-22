@@ -58,3 +58,9 @@ class UserRegister(models.Model):
     email = models.EmailField(max_length=200, null = True)
     password1 = models.CharField(max_length=200)
     password2 = models.CharField(max_length=200)
+
+class FeedBack(models.Model):
+	username = models.CharField(max_length=200)
+	email = models.EmailField(max_length=200)
+	product = models.CharField(max_length=200)
+	feedback = models.TextField()
