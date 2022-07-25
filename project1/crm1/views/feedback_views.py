@@ -8,8 +8,8 @@ class FeedBackViews(CreateView):
     form_class= FeedBackForm
                 
     def post(self,request):
+        form = FeedBackForm(request.POST)
         if request.method == 'POST':
-            form = FeedBackForm
             if form.is_valid():
                 # form.save()
                 uname=form.cleaned_data.get('username')
@@ -17,6 +17,6 @@ class FeedBackViews(CreateView):
                 pduct = form.cleaned_data.get('product')
                 fback = form.cleaned_data.get('feedback')
                 FeedBack.objects.create(username=uname,email=mail,product=pduct,feedback=fback)
-                return redirect('thanks')
+                return redirect('crm1:thanks')
         context = {'form':form}
         return redirect('crm1/feedback_form.html',context)

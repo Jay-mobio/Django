@@ -64,3 +64,4 @@ class FeedBack(models.Model):
 	email = models.EmailField(max_length=200)
 	product = models.CharField(max_length=200)
 	feedback = models.TextField()
+       

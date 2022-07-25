@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>User detail</title>
+    </head>
+    <body>
+        <form action="">
+        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <br>
+        {% for customer in data %}
+            {{customer.name}}
+            {{customer.phone}}
+            {{customer.email}}<br>
+        {% endfor %}
+{% comment %} 
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.preious_page_number}}">Previous</a>
+        {% endif %}
+        <span>{{page_obj.number}}of {{page_obj.paginator.num_pages}}</span>
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">Next</a>
+        {% endif %} {% endcomment %}
+        {% comment %} <hr>
+        {% for fresher in freshers %}
+            {{fresher.name}}
+            {{fresher.phone}}
+            {{fresher.email}}<br>
+        {% endfor %} {% endcomment %}
+    </body>
+</html>

@@ -7,7 +7,8 @@ from .views import (home_views,register_views,userpage_views,
 accountsettings_views,products_views,customer_views,
 createorder_views,updateorder_views,deleteorder_views,
 password_change_done_views,password_complete_views,password_confirm_views,
-password_reset_views,login_views,logout_views,feedback_views
+password_reset_views,login_views,logout_views,feedback_views,thanks_views,
+customer_list_views,customer_detail_view
 )
 
 
@@ -57,6 +58,9 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/',password_confirm_views.PasswordResetConfirmView.as_view(),name="password_reset_confirm"),
 
     path('reset_password_complete/',password_complete_views.PasswordResetCompleteView.as_view(),name="password_reset_complete"),
-    path('feed_back/',feedback_views.FeedBackViews.as_view(),name='feed_back')
+    path('feed_back/',feedback_views.FeedBackViews.as_view(),name='feed_back'),
+    path('thanks/',thanks_views.ThanksViews.as_view(),name='thanks'),
+    path('customer_list/',customer_list_views.CustomertListViews.as_view(),name = 'details'),
+    path('customer_details/',customer_detail_view.CustomerDetailViews.as_views())
 ]
 
