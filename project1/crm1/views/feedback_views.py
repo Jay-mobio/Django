@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from crm1.models import FeedBack, FeedBack
-from crm1.forms import FeedBackForm
+from crm1.forms.forms import FeedBackForm
 from django.views.generic.edit import CreateView
 
 class FeedBackViews(CreateView):

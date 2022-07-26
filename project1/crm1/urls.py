@@ -61,6 +61,7 @@ urlpatterns = [
     path('feed_back/',feedback_views.FeedBackViews.as_view(),name='feed_back'),
     path('thanks/',thanks_views.ThanksViews.as_view(),name='thanks'),
     path('customer_list/',customer_list_views.CustomertListViews.as_view(),name = 'details'),
-    path('customer_details/',customer_detail_view.CustomerDetailViews.as_views())
+    path('customer_detail/',customer_detail_view.CustomerList.as_view()),
+    path('customers_detail/<int:pk>',customer_detail_view.CustomerDetailViews.as_view(),name='customerdetail'),
 ]
 

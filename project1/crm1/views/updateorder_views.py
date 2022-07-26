@@ -1,6 +1,6 @@
 from django.views import View
 from django.shortcuts import render,redirect
-from crm1.forms import OrderForm
+from crm1.forms.forms import OrderForm
 from crm1.models import Order
 
 class UpdateOrderViews(View):

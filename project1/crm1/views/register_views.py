@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
 from django.contrib import messages
-from crm1.forms import UserRegister
+from crm1.forms.forms import UserRegister
 from django.contrib.auth.models import User
 
 class RegisterView(CreateView):

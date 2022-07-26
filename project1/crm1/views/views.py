@@ -2,7 +2,7 @@ from tokenize import group
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from ..models import *
-from ..forms import CustomerForm, OrderForm,CreateUserForm
+from ..forms.forms import CustomerForm, OrderForm,CreateUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout

@@ -11,7 +11,7 @@ django
 
 
 
-from .models import *
+from ..models import *
 
 
 class CustomerForm(ModelForm):

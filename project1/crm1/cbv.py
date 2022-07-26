@@ -4,10 +4,10 @@ from django.shortcuts import render,redirect
 
 from django.views.generic.base import TemplateView
 
-from crm1 import forms
+from crm1.forms import forms
 from .models import *
 from django.contrib.auth import forms
-from .forms import CustomerForm, OrderForm,CreateUserForm
+from .forms.forms import CustomerForm, OrderForm,CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.forms import inlineformset_factory

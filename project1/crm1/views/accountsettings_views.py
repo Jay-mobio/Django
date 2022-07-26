@@ -1,6 +1,6 @@
 from django.views import View
 from django.shortcuts import render
-from ..forms import CustomerForm
+from ..forms.forms import CustomerForm
 
 
 class AccountSettingsViews(View):

@@ -32,6 +32,7 @@ class LoginView(FormView):
     template_name = "crm1/login.html"
     redirect_authenticated_user = False
     extra_context = None
+    get_success_url = "/crm1/user.html"
 
     @method_decorator(sensitive_post_parameters())
     @method_decorator(csrf_protect)

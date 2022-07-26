@@ -7,11 +7,15 @@
     <title>Customer Detail</title>
 </head>
 <body>
-    <h1>Customer Details</h1>
+    <h1>Customer detail page</h1>
+    {{cost.id}}
+    {{cost.name}}
+    {{cost.email}}
+    {{cost.phone}}
+    <hr>
     {% for cust in customer_list %}
         <li><a href="{#% url 'crm1:customerdetail' cust.id %#}" class="">{{cust.name}}</a></li>
         <br>
     {% endfor %}
-    
 </body>
 </html>
